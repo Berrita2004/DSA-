@@ -3,15 +3,15 @@ class Solution {
         int reverse = 0 ;
     while ( x != 0) {
         int last = x % 10 ;
-         x = x/10;
-         if (reverse > Integer.MAX_VALUE / 10 || (reverse == Integer.MAX_VALUE / 10 && last > 7)) {
-                return 0;
-            }
-            if (reverse < Integer.MIN_VALUE / 10 || (reverse == Integer.MIN_VALUE / 10 && last < -8)) {
-                return 0;
-            }
-         reverse = reverse*10+last ;
-    }     
-     return reverse ;  
+       
+        
+    
+     // Check for overflow before multiplying by 10 and adding last
+            if (reverse > Integer.MAX_VALUE/10 || (reverse == Integer.MAX_VALUE/10 && last > 7)) return 0;
+            if (reverse < Integer.MIN_VALUE/10 || (reverse == Integer.MIN_VALUE/10 && last < -8)) return 0;
+            reverse = reverse * 10 + last;
+            x = x / 10;
     }
-}
+        return reverse;
+    }
+    }
