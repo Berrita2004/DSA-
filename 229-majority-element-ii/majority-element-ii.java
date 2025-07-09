@@ -13,6 +13,7 @@ class Solution {
            }
               if (count > (n/3)){
             ans.add(nums[i]);
+             if (ans.size() == 2) break;
          }
   
         }
