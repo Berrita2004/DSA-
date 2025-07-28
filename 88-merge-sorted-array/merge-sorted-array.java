@@ -7,7 +7,7 @@ class Solution {
         for (int i = 0; i < n; i++) {
             nums1[m + i] = nums2[i];
         }
-
+ 
         while (gap > 0) {
             int left = 0;
             int right = left + gap;
