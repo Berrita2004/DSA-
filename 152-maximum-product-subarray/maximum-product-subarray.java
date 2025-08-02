@@ -11,7 +11,8 @@ class Solution {
             suff *= arr[n - i - 1];
             ans = Math.max(ans, Math.max(pre, suff));
         }
+
+
         return ans;
-    
     }
 }
