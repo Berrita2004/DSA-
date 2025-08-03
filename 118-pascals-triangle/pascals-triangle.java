@@ -8,7 +8,7 @@ class Solution {
             }
             ans.add(tempList);
 
-        }
+    }
         return ans;
     }    
 
