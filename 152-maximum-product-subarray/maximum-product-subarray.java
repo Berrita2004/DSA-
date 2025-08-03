@@ -1,16 +1,17 @@
 class Solution {
-    public int maxProduct(int[] arr) {
-      
-    int prod1 = arr[0],prod2 = arr[0],result = arr[0];
-    
-    for(int i=1;i<arr.length;i++) {
-        int temp = Math.max(arr[i],Math.max(prod1*arr[i],prod2*arr[i]));
-        prod2 = Math.min(arr[i],Math.min(prod1*arr[i],prod2*arr[i]));
-        prod1 = temp;
+    public int maxProduct(int[] nums) {
+        int n = nums.length;
+        int max = Integer.MIN_VALUE;
+        int pre = 0 ;
+        int suf = 0 ; 
+        for ( int i = 0 ; i < n ; i++){
+            if (pre==0) pre = 1;
+            if ( suf == 0) suf = 1;
+            pre = pre * nums[i];
+            suf = suf * nums[n-i-1];
+            max = Math.max(max, Math.max(suf, pre));
+        } 
+        return max ; 
         
-        result = Math.max(result,prod1);
-    }
-    
-    return result;
     }
 }
