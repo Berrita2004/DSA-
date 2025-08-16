@@ -38,6 +38,7 @@ class Solution {
                 count = 0 ;
             }
         }
+        
         nob += count /k;
         return nob>=m;
 
