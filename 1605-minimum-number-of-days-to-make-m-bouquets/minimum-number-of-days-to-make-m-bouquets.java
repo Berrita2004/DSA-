@@ -1,5 +1,7 @@
 class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
+
+        //pehle max and min alag nikalo 
         int min = Integer.MAX_VALUE ; 
         int max = Integer.MIN_VALUE;
         int n = bloomDay.length;
@@ -7,6 +9,7 @@ class Solution {
             max = Math.max(max, bloom);
             min = Math.min(min, bloom);
         }
+        // bs ka logic
         int low = min ; 
         int high = max ; 
         int res = -1 ;
@@ -24,6 +27,8 @@ class Solution {
         }
         return res ; 
     }
+
+    //important maths ka part 
     public static boolean possible (int []bloomDay, int m, int k , int mid){
         int n = bloomDay.length;
         int count = 0 ; 
