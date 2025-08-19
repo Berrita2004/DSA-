@@ -4,13 +4,13 @@ class Solution {
         int low = Integer.MIN_VALUE ;
         int high = 0 ; 
         for ( int i = 0 ; i < n ;i ++){
-            low = Math.max(low , nums[i]);
+            low = Math.max(low ,nums[i]);
             high += nums[i];
         }
         while ( low <= high ){
             int mid = (low + high)/2 ; 
             int add = Addition (nums, mid );
-            if (add > k){
+            if (add> k){
                 low = mid +1;
             }
             else {
@@ -23,7 +23,7 @@ class Solution {
         int p = 0 ; 
         int s= 1;
         for ( int i = 0 ; i<nums.length ;i++){
-            if ((p+nums[i])<=mid){
+            if (p+nums[i]<=mid){
                 p+=nums[i];
             }
             else{
