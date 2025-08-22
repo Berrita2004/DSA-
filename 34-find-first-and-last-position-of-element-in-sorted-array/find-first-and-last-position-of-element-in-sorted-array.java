@@ -24,6 +24,7 @@ class Solution {
                 high = mid - 1;
                 }
             }
+            
         }
            public void lastIdx(int [] nums,int  n ,int target, int [] ans ){
             int low = 0 ; int high = n-1;
