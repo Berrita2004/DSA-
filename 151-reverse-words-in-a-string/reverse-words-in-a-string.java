@@ -7,15 +7,13 @@ class Solution {
          while  (i>=0 && s.charAt(i) == ' '){
                 i--;
             }
-            if ( i<0) {
+            if ( i<0 ) {
                 break;
             }
               int end = i ;
 
         while(i>= 0 && s.charAt(i)!=' '){
                 i--;
-              
-
             }
             int start = i+1;
             if (res.length()>0) res.append(" ");
