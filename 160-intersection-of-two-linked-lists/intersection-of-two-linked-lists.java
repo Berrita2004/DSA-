@@ -11,20 +11,35 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-HashSet<ListNode> set = new HashSet<>();
+int lenA = length(headA);
+        int lenB = length(headB);
         
-        // Store all nodes of List A
-        while (headA != null) {
-            set.add(headA);
+        // Move longer list ahead by the difference
+        while (lenA > lenB) {
             headA = headA.next;
+            lenA--;
+        }
+        while (lenB > lenA) {
+            headB = headB.next;
+            lenB--;
         }
         
-        // Check nodes of List B
-        while (headB != null) {
-            if (set.contains(headB)) return headB;
+        // Now move both together
+        while (headA != null && headB != null) {
+            if (headA == headB) return headA;
+            headA = headA.next;
             headB = headB.next;
         }
         
         return null;
+    }
+    
+    private int length(ListNode node) {
+        int count = 0;
+        while (node != null) {
+            count++;
+            node = node.next;
+        }
+        return count;
     }
 }
