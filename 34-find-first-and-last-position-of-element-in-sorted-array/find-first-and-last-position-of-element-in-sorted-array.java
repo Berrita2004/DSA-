@@ -1,49 +1,46 @@
-class Solution {
+class Solution { // re-coding 
     public int[] searchRange(int[] nums, int target) {
-        int n = nums.length;
-        int [] ans = new int [2];
-        ans [0] = -1;
-        ans [1] = -1;
-        firstIdx(nums,n, target, ans );
-        lastIdx(nums,n , target, ans );
-        return ans ;
+     int n = nums.length;
+     int[] res = new int[2];
+     res[0] = firstIdx(nums,target,n);
+     res[1] = secIdx(nums,target,n);
+     return res;
+    }
+    public int firstIdx(int[]nums, int target, int n ){
+       int low = 0 ;
+       int high = n-1;
+       int ans = -1 ; 
+       while(low <= high ){
+        int mid = (low + high)/2 ;
+        if (nums[mid]== target ){
+             ans = mid;
+            high = mid -1;
+        }
+        else if (nums[mid]<target){
+            low = mid + 1 ;
+        }
+        else  high = mid -1;
+        
+       }
+       return ans ;
+    }
+      public int secIdx(int[]nums, int target, int n ){
+       int low = 0 ;
+       int high = n-1;
+       int ans = -1 ;
+       while(low <= high ){
+        int mid = (low + high)/2 ;
+        if (nums[mid]== target ){
+             ans = mid;
+            low = mid + 1 ;
+        }
+        else if(nums[mid]<target){
+           low = mid +1;
+        }
+        else high = mid -1;
+        
+       }
+       return ans ;
     }
 
-        public void firstIdx(int [] nums,int  n ,int target, int [] ans ){
-            int low = 0 ; int high = n-1;
-        while ( low <= high){
-            int mid = (low + high )/2;
-            if (nums[mid]==target){
-                ans [0]= mid;
-                high = mid -1 ;
-            }
-            else if (nums[mid]<target){
-                low = mid+1;
-            }
-            else {
-                high = mid - 1;
-                }
-            }
-            
-        }
-           public void lastIdx(int [] nums,int  n ,int target, int [] ans ){
-            int low = 0 ; int high = n-1;
-        while ( low <= high){
-            int mid = (low + high )/2;
-            if (nums[mid]==target){
-                ans [1] = mid;
-                
-                low = mid+1;
-            }
-            else if (nums[mid]<target){
-                 low = mid+1;
-                
-            }
-            else {
-               
-               high = mid -1 ;
-                }
-            }
-        }
-     
 }
