@@ -16,26 +16,36 @@ class Node {
 class Solution {
     public Node copyRandomList(Node head) {
         if (head == null) return null;
+    
+      Node temp = head;
+      while ( temp != null){
+        Node copy = new Node(temp.val);
+        copy.next = temp.next;
+         temp.next = copy ;
+         temp = copy.next;
+      }
 
-        // Map original node → copied node
-        HashMap<Node, Node> map = new HashMap<>();
-        Node temp = head;
+      //connecting random pointer
+      temp = head ;
+      while ( temp!= null){
+       if (temp.random != null) {
+                temp.next.random = temp.random.next;
+            }
+        temp = temp.next.next;
 
-        // 1st pass: create copy nodes
-        while (temp != null) {
-            map.put(temp, new Node(temp.val));  // new node with same value
-            temp = temp.next;
-        }
+      }
 
-        // 2nd pass: assign next and random
-        temp = head;
-        while (temp != null) {
-            Node copy = map.get(temp);
-            copy.next = map.get(temp.next);
-            copy.random = map.get(temp.random);
-            temp = temp.next;
-        }
-
-        return map.get(head);
+      //Connecting next pointer
+      Node dummyNode = new Node(-1);
+      Node res = dummyNode;
+      temp = head ;
+      while ( temp != null){
+        res.next =temp.next;
+        temp.next = temp.next.next;
+        res = res.next;
+        temp = temp.next;
+      }
+      return dummyNode.next;
     }
+
 }
