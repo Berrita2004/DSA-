@@ -16,7 +16,7 @@ class Node {
 class Solution {
     public Node copyRandomList(Node head) {
         if (head == null) return null;
-    
+    //Insert copy nodes after each Og node 
       Node temp = head;
       while ( temp != null){
         Node copy = new Node(temp.val);
@@ -47,5 +47,5 @@ class Solution {
       }
       return dummyNode.next;
     }
-
+//dry run reviosn  
 }
