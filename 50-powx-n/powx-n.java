@@ -7,6 +7,8 @@ class Solution {
         }
         else {
             return half * half * x;
+
+            
         }
     }
 
