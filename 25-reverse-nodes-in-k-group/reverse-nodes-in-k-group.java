@@ -46,7 +46,7 @@ class Solution {
         }
         prev = temp;
         temp = nextNode;
-      }
+      } 
       return head;
     }
 }
