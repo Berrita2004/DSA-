@@ -13,7 +13,7 @@ class Solution {
         // Step 2: Iterate over intervals
         for (int i = 0; i < n; i++) {
             int start = intervals[i][0];
-            int end = intervals[i][1];
+            int end =    intervals[i][1];
 
             // Step 3: Merge all overlapping intervals with intervals[i]
             int j = i + 1;
