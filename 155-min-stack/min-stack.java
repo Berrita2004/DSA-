@@ -1,31 +1,43 @@
+import java.util.*;
+
 class MinStack {
-    Stack<Integer> stack;
-    Stack<Integer> minStack;
+    Deque<Long> st;
+    long min;
 
     public MinStack() {
-        stack = new Stack<>();
-        minStack = new Stack<>();
+        st = new ArrayDeque<>();
     }
 
     public void push(int val) {
-        stack.push(val);
-        if (minStack.isEmpty() || val <= minStack.peek()) {
-            minStack.push(val);
+        if (st.isEmpty()) {
+            st.push((long)val);
+            min = val;
+        } else if (val >= min) {
+            st.push((long)val);
+        } else {
+            // store encoded value
+            st.push(2L * val - min);
+            min = val;
         }
     }
 
     public void pop() {
-        if (stack.peek().equals(minStack.peek())) {
-            minStack.pop();
+        if (st.isEmpty()) return;
+        long top = st.pop();
+        if (top < min) {
+            // decode previous min
+            min = 2 * min - top;
         }
-        stack.pop();
     }
 
     public int top() {
-        return stack.peek();
+        if (st.isEmpty()) return -1; // not required on LeetCode, but safe
+        long top = st.peek();
+        return top >= min ? (int)top : (int)min;
     }
 
     public int getMin() {
-        return minStack.peek();
+        if (st.isEmpty()) return -1; // not required on LeetCode, but safe
+        return (int)min;
     }
 }
