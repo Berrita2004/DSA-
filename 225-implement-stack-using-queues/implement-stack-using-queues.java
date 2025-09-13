@@ -15,7 +15,7 @@ Queue<Integer> q = new LinkedList<>();
     }
     
     public int pop() {
-        return q.poll();
+        return q.poll();    
          
     }
     
