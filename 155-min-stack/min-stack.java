@@ -1,43 +1,40 @@
-import java.util.*;
-
 class MinStack {
-    Deque<Long> st;
-    long min;
+Stack <Integer> mainStack;
+Stack <Integer> minStack;
 
     public MinStack() {
-        st = new ArrayDeque<>();
+        mainStack = new Stack<>();
+        minStack = new Stack<>();
     }
-
+    
     public void push(int val) {
-        if (st.isEmpty()) {
-            st.push((long)val);
-            min = val;
-        } else if (val >= min) {
-            st.push((long)val);
-        } else {
-            // store encoded value
-            st.push(2L * val - min);
-            min = val;
+        mainStack.push(val);
+        if (minStack.isEmpty() || val <= minStack.peek()){
+            minStack.push(val);
         }
     }
-
+    
     public void pop() {
-        if (st.isEmpty()) return;
-        long top = st.pop();
-        if (top < min) {
-            // decode previous min
-            min = 2 * min - top;
+        if(mainStack.peek().equals(minStack.peek())){
+            minStack.pop();
         }
+        mainStack.pop();
     }
-
+    
     public int top() {
-        if (st.isEmpty()) return -1; // not required on LeetCode, but safe
-        long top = st.peek();
-        return top >= min ? (int)top : (int)min;
+        return mainStack.peek();
     }
-
+    
     public int getMin() {
-        if (st.isEmpty()) return -1; // not required on LeetCode, but safe
-        return (int)min;
+        return minStack.peek();
     }
 }
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
