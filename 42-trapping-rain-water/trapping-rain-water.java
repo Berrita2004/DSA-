@@ -1,32 +1,25 @@
 class Solution {
+    // using one O(N) sapce 
     public int trap(int[] height) {
-        int lmax = 0 ; int rmax = 0;
-        int total = 0 ; 
         int n = height.length;
-        int l = 0 ; 
-        int r = n-1;
-        while ( l< r){
-            // well work on the smaller unit first 
-            if ( height [l] <= height[r]){
-                //agar lmax bada hai toh pani add ho jo add kardenge 
-                if (lmax > height[l]){
-                    total += lmax - height[l];
-                }
-                else { //warna lmax ki value update
-                    lmax = height[l];
-                }
-                l++;
-            }
-            else {// same above logic
-                if (rmax > height[r]){
-                    total += rmax- height[r];
-                }
-                else {
-                    rmax = height[r];
-                }
-                r--;
-            }
+        if (n == 0) return 0;
+
+        // Build prefix array
+        int[] prefix = new int[n];
+        prefix[0] = height[0];
+        for (int i = 1; i < n; i++) {
+            prefix[i] = Math.max(prefix[i - 1], height[i]);
         }
+
+        //  Traverse from right while tracking rightMax, ek saath 2 kaam karo
+        int rmax = height[n - 1];
+        int total = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            rmax = Math.max(rmax, height[i]);
+            int water = Math.min(prefix[i], rmax) - height[i];
+            if (water > 0) total += water;
+        }
+
         return total;
     }
 }
