@@ -1,24 +1,30 @@
 class Solution {
     public int trap(int[] height) {
-        int [] prefix = new int [height.length];
-        prefix[0] = height[0];
-        for(int i = 1 ; i< height.length; i ++){
-            prefix[i] = Math.max(prefix[i-1], height[i]);
-        }
-        
-
-        int [] suffix = new int [height.length];
-        suffix[height.length-1] = height[height.length-1];
-        for ( int i = height.length - 2; i >= 0 ; i-- ){
-            suffix[i] = Math.max(suffix[i+1], height[i]);
-        }
-
+        int lmax = 0 ; int rmax = 0;
         int total = 0 ; 
-        for ( int i = 0 ; i < height.length; i++){
-           int  leftMax = prefix[i];
-           int rightMax = suffix[i];
-            if (height[i]< leftMax &&  height[i] < rightMax){
-                total += Math.min(leftMax, rightMax)- height[i];
+        int n = height.length;
+        int l = 0 ; 
+        int r = n-1;
+        while ( l< r){
+            // well work on the smaller unit first 
+            if ( height [l] <= height[r]){
+                //agar lmax bada hai toh pani add ho jo add kardenge 
+                if (lmax > height[l]){
+                    total += lmax - height[l];
+                }
+                else { //warna lmax ki value update
+                    lmax = height[l];
+                }
+                l++;
+            }
+            else {// same above logic
+                if (rmax > height[r]){
+                    total += rmax- height[r];
+                }
+                else {
+                    rmax = height[r];
+                }
+                r--;
             }
         }
         return total;
