@@ -1,19 +1,19 @@
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
-        int n = nums.length;
-        int[] ans = new int[n];
-        
-        for (int i = 0; i < n; i++) {
-            ans[i] = -1; // default if no greater element
-            for (int j = 1; j < n; j++) {
-                int nextIndex = (i + j) % n; // circular index
-                if (nums[nextIndex] > nums[i]) {
-                    ans[i] = nums[nextIndex];
-                    break;
-                }
+        int [] ans = new int [nums.length];
+         Stack <Integer> st = new Stack<>();
+        for ( int j = 2 *(nums.length-1) ; j >= 0 ; j --){
+            int i = j% (nums.length);
+            while(!st.isEmpty() && st.peek() <= nums[i]){
+                st.pop();
             }
+            if (st.isEmpty()) ans[i] = -1;
+            else if (st.isEmpty())  {ans[i] = -1;     }
+                     
+            else ans[i] = st.peek();
+            
+            st.push(nums[i]);
         }
-        
         return ans;
     }
 }
