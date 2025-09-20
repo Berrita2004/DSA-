@@ -20,7 +20,6 @@ class Solution {
             res.append(st.pop());
         }
         res.reverse();
-        
         while( res.length() > 1 && res.charAt(0)== '0'){
             res.deleteCharAt(0);
         }
