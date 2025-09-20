@@ -2,7 +2,7 @@ class Solution {
     public int[] nextGreaterElements(int[] nums) {
         int [] ans = new int [nums.length];
          Stack <Integer> st = new Stack<>();
-        for ( int j = 2 *(nums.length-1) ; j >= 0 ; j --){
+        for ( int j = 2 *(nums.length-1) ; j >= 0 ; j --){ // hum circular chal rahe hai!
             int i = j% (nums.length);
             while(!st.isEmpty() && st.peek() <= nums[i]){
                 st.pop();
