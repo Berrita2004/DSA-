@@ -1,19 +1,21 @@
 class StockSpanner {
- private ArrayList<Integer> arr; 
+    private Stack<int[]> st;
+     private int idx;
+ 
     public StockSpanner() {
-        arr = new ArrayList<>();
+        idx = -1;
+        st = new Stack<>();
     }
     
     public int next(int price) {
-        arr.add(price);
-        int idx = 1;
-        for ( int i = arr.size() - 2; i >= 0; i--){
-            if (arr.get(i)<= price){
-                idx ++;
-            }
-            else break;
+        idx ++;
+        //implementing Prev greater element wala code
+        while(!st.isEmpty() && st.peek()[0] <= price){
+            st.pop();
         }
-        return idx;
+        int span = st.isEmpty() ? (idx +1) : (idx - st.peek()[1]);
+        st.push(new int []{price,idx});
+        return span ;
     }
 }
 
