@@ -7,6 +7,7 @@ class Solution {
         int maxLen = Integer.MIN_VALUE;
         while ( r < n){
             if ( nums[r] == 0  ) zero ++;
+            //while se if kardiya idhar 
             if  ( zero > k){
                if (nums[l] == 0) zero--;
                l++;
