@@ -7,6 +7,7 @@ class Solution {
             st.push(c);
         }
         else {
+            
            if ( st.isEmpty()) return false ;
            char top = st.pop();
            if ( c==')' &&  top != '(' ||  c=='}' &&  top != '{' ||  c==']' &&  top != '['  ){
