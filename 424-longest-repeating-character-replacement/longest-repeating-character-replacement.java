@@ -10,7 +10,7 @@ class Solution {
         h.put(c , h.getOrDefault(c,0)+1);
         maxFreq = Math.max(maxFreq , h.get(c));
         int len = r-l+1;
-        while(((r-l+1)-maxFreq) >k){
+        if (((r-l+1)-maxFreq) >k){
             char left= s.charAt(l);
              h.put(left,h.get(left)-1);
              l++;
