@@ -8,6 +8,7 @@ class Solution {
         for ( int i = 0 ; i < n ; i++){
             char c = s.charAt(i);
             if(mpp.containsKey(c)){
+                //l peeche chala gaya lol
                 l =Math.max(l, mpp.get(c) +1);
             }
             int len = i-l+1;
