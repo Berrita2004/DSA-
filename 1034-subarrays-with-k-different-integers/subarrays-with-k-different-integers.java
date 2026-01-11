@@ -8,12 +8,15 @@ class Solution {
         HashMap <Integer, Integer> map = new HashMap<>();
 
         for ( int r = 0 ; r < nums.length; r++){
+            // ye nums[r] ko add to the window karta hai 
             map.put(nums[r],map.getOrDefault(nums[r],0)+1);
+            // If this number is NEW (freq becomes 1), one distinct reduces
             if(map.get(nums[r])== 1){
                 k--;
             }
+            //agar k distinct more hai 0 se 
               while(k<0){
-            map.put(nums[l], map.get(nums[l])-1);
+            map.put(nums[l], map.get(nums[l])-1); //frequency-- 
             if(map.get(nums[l])==0){
                 k++;
             }
