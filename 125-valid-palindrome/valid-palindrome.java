@@ -5,6 +5,7 @@ class Solution {
         while ( left < right ){
             int l = s.charAt(left);
             int r = s.charAt(right);
+            //check condition
             if (!Character.isLetterOrDigit(l)){
                 left++;
             }
