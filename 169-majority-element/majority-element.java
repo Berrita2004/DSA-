@@ -7,6 +7,7 @@ class Solution {
                 c = 1;
                 el = nums[i];
             }
+            
             else if (el == nums[i]) c++;
             else c--;
          }
