@@ -1,4 +1,6 @@
-class Solution { // re-coding 
+class Solution { 
+    // re-coding 
+    // revison 
     public int[] searchRange(int[] nums, int target) {
      int n = nums.length;
      int[] res = new int[2];
