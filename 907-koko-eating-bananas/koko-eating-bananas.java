@@ -1,5 +1,6 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
+        // recode
         int max = 1;
       for ( int pile : piles){
         max = Math.max(max, pile);
