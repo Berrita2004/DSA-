@@ -2,6 +2,7 @@ class Solution {
     public int findContentChildren(int[] g, int[] s) {
         //sort both
         Arrays.sort(g);
+        //sort
         Arrays.sort(s);
         int l = 0 ;
          int r = 0 ;
